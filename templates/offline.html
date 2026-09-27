@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Offline · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<div class="auth-shell">
+  <article class="card auth-card">
+    <h1>You are offline</h1>
+    <p class="muted">
+      This page is not cached yet. The problem library, sheets and progress pages work
+      offline once loaded; running code needs the local server, which must be reachable.
+    </p>
+    <p class="muted small">
+      Everything on {{ platform_name }} is served from this machine — if the server is
+      running, reload and you will be back.
+    </p>
+    <p><a class="btn btn-primary" href="{% url 'dashboard:index' %}">Try again</a></p>
+  </article>
+</div>
+{% endblock %}

@@ -1,0 +1,5 @@
+# Runtime requirements for a local install.
+# Everything else (compilers, JDK, node) is only needed for the languages you
+# actually enable -- see "Language toolchains" in README.md.
+Django>=5.2,<6.0
+djangorestframework>=3.15

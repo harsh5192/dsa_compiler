@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ sheet.name }} · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div>
+    <p class="breadcrumb"><a href="{% url 'sheets:list' %}">Sheets</a></p>
+    <h1>{{ sheet.name }}</h1>
+    <p class="muted">{{ sheet.description|default:"No description." }}</p>
+  </div>
+  <div class="hero-actions">
+    <span class="badge badge-solved">{{ solved_count }} / {{ total_count }} solved</span>
+  </div>
+</header>
+
+<div class="progressbar progressbar-lg" role="progressbar" aria-valuenow="{{ percent }}"
+     aria-valuemin="0" aria-valuemax="100" aria-label="Sheet progress">
+  <span style="width: {{ percent }}%"></span>
+</div>
+<p class="muted small">{{ percent }}% complete</p>
+
+{% for section in sections %}
+  <section class="card">
+    <h2 class="card-title">{{ section.name }}</h2>
+    {% if section.description %}<p class="muted small">{{ section.description }}</p>{% endif %}
+    <ol class="sheet-problems" start="{{ forloop.counter0|add:1 }}">
+      {% for entry in section.problems.all %}
+        <li class="sheet-problem status-{{ entry.user_status }}">
+          <a href="{{ entry.problem.get_absolute_url }}">{{ entry.problem.title }}</a>
+          <span class="badge badge-{{ entry.problem.difficulty|lower }}">{{ entry.problem.difficulty }}</span>
+          {% if entry.user_status == 'solved' %}<span class="badge badge-solved">Solved</span>{% endif %}
+          {% if entry.user_status == 'attempted' %}<span class="badge badge-attempted">Attempted</span>{% endif %}
+          <span class="muted small">{{ entry.problem.display_domain }}</span>
+        </li>
+      {% empty %}
+        <li class="muted">Every problem in this section is hidden.</li>
+      {% endfor %}
+    </ol>
+  </section>
+{% empty %}
+  <p class="empty">This sheet has no sections yet.</p>
+{% endfor %}
+{% endblock %}

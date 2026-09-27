@@ -1,0 +1,2355 @@
+{
+  "name": "Love Babbar DSA Sheet",
+  "description": "The popular 450-question sheet grouped by topic. This bundled copy contains the question index only: titles, difficulty and topics.",
+  "source": "Love Babbar sheet - question index, bundled by this project",
+  "version": "index-1.0",
+  "sections": [
+    {
+      "name": "Getting Started",
+      "order": 0,
+      "problems": [
+        {
+          "title": "Merge two sorted arrays",
+          "difficulty": "Easy",
+          "domains": [
+            "Array",
+            "Sorting"
+          ],
+          "tags": [
+            "Array",
+            "Sorting"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Merge k sorted arrays",
+          "difficulty": "Medium",
+          "domains": [
+            "Heap",
+            "Array"
+          ],
+          "tags": [
+            "Heap",
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Valid Parentheses",
+          "slug": "valid-parentheses",
+          "difficulty": "Easy",
+          "domains": [
+            "Stack",
+            "String"
+          ],
+          "tags": [
+            "Stack",
+            "String"
+          ],
+          "description": "Given a string <code>s</code> containing just the characters <code>( ) { } [ ]</code>, return true if every opening bracket is closed by the same type of bracket in the correct order.",
+          "function_name": "isValid",
+          "param_spec": [
+            {
+              "name": "s",
+              "type": "string"
+            }
+          ],
+          "return_spec": "bool",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[\"()\"]",
+              "expected_output": "true",
+              "is_sample": true
+            },
+            {
+              "input": "[\"()[]{}\"]",
+              "expected_output": "true",
+              "is_sample": true
+            },
+            {
+              "input": "[\"(]\"]",
+              "expected_output": "false",
+              "is_sample": true
+            },
+            {
+              "input": "[\"([)]\"]",
+              "expected_output": "false",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Parity of a string",
+          "difficulty": "Easy",
+          "domains": [
+            "Bit Manipulation",
+            "String"
+          ],
+          "tags": [
+            "Bit Manipulation",
+            "String"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Arrays",
+      "order": 1,
+      "problems": [
+        {
+          "title": "Two Sum",
+          "slug": "two-sum",
+          "difficulty": "Easy",
+          "domains": [
+            "Array",
+            "Hashing"
+          ],
+          "tags": [
+            "Array",
+            "Hash Table"
+          ],
+          "description": "Given an array of integers <code>nums</code> and an integer <code>target</code>, return the indices of the two numbers that add up to <code>target</code>.\n\nYou may assume that each input has <strong>exactly one</strong> solution and you may not use the same element twice. Return the answer in any order.",
+          "input_format": "The first element of the JSON array is the list of numbers, the second is the target.",
+          "output_format": "A JSON array with the two indices.",
+          "constraints": "2 <= nums.length <= 10^4\n-10^9 <= nums[i] <= 10^9\nOnly one valid answer exists.",
+          "examples": "Input: nums = [2,7,11,15], target = 9\nOutput: [0,1]\nExplanation: nums[0] + nums[1] == 9.",
+          "function_name": "twoSum",
+          "param_spec": [
+            {
+              "name": "nums",
+              "type": "int[]"
+            },
+            {
+              "name": "target",
+              "type": "int"
+            }
+          ],
+          "return_spec": "int[]",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(1)",
+          "test_cases": [
+            {
+              "input": "[[2,7,11,15], 9]",
+              "expected_output": "[0,1]",
+              "is_sample": true
+            },
+            {
+              "input": "[[3,2,4], 6]",
+              "expected_output": "[1,2]",
+              "is_sample": true
+            },
+            {
+              "input": "[[3,3], 6]",
+              "expected_output": "[0,1]",
+              "is_sample": true
+            },
+            {
+              "input": "[[-1,-2,-3,-4,-5], -8]",
+              "expected_output": "[2,4]",
+              "is_hidden": true
+            },
+            {
+              "input": "[[1,5,9,13,7,4,3,2], 22]",
+              "expected_output": "[2,3]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Maximum and minimum of an array",
+          "difficulty": "Easy",
+          "domains": [
+            "Array"
+          ],
+          "tags": [
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Maximum and minimum of an array using three comparisons",
+          "difficulty": "Easy",
+          "domains": [
+            "Array"
+          ],
+          "tags": [
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Move all zeroes to the end",
+          "difficulty": "Easy",
+          "domains": [
+            "Array",
+            "Two Pointer"
+          ],
+          "tags": [
+            "Array",
+            "Two Pointer"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Smallest and second smallest elements",
+          "difficulty": "Easy",
+          "domains": [
+            "Array"
+          ],
+          "tags": [
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Check if two arrays are equal or not",
+          "difficulty": "Easy",
+          "domains": [
+            "Array"
+          ],
+          "tags": [
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Remove duplicates in an array",
+          "difficulty": "Easy",
+          "domains": [
+            "Array",
+            "Hashing"
+          ],
+          "tags": [
+            "Array",
+            "Hashing"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Maximum in a bitonic array",
+          "difficulty": "Medium",
+          "domains": [
+            "Array",
+            "Binary Search"
+          ],
+          "tags": [
+            "Array",
+            "Binary Search"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Maximum in a bitonic array using linear time complexity",
+          "difficulty": "Medium",
+          "domains": [
+            "Array"
+          ],
+          "tags": [
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Minimize the heights",
+          "difficulty": "Medium",
+          "domains": [
+            "Array",
+            "Sorting"
+          ],
+          "tags": [
+            "Array",
+            "Sorting"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Minimum number of distinct elements",
+          "difficulty": "Medium",
+          "domains": [
+            "Array",
+            "Hashing"
+          ],
+          "tags": [
+            "Array",
+            "Hashing"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Rotate Array",
+          "slug": "rotate-array",
+          "difficulty": "Medium",
+          "domains": [
+            "Array",
+            "Two Pointer"
+          ],
+          "tags": [
+            "Array",
+            "Two Pointers",
+            "Math"
+          ],
+          "description": "Rotate the array to the right by k steps and return it.",
+          "function_name": "rotate",
+          "param_spec": [
+            {
+              "name": "nums",
+              "type": "int[]"
+            },
+            {
+              "name": "k",
+              "type": "int"
+            }
+          ],
+          "return_spec": "int[]",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(1)",
+          "test_cases": [
+            {
+              "input": "[[1,2,3,4,5,6,7], 3]",
+              "expected_output": "[5,6,7,1,2,3,4]",
+              "is_sample": true
+            },
+            {
+              "input": "[[-1,-100,3,99], 2]",
+              "expected_output": "[3,99,-1,-100]",
+              "is_sample": true
+            },
+            {
+              "input": "[[1,2], 3]",
+              "expected_output": "[2,1]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Maximum difference",
+          "difficulty": "Medium",
+          "domains": [
+            "Array"
+          ],
+          "tags": [
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Maximum Index",
+          "difficulty": "Medium",
+          "domains": [
+            "Array"
+          ],
+          "tags": [
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Next Greater Element",
+          "slug": "next-greater-element",
+          "difficulty": "Medium",
+          "domains": [
+            "Stack",
+            "Array"
+          ],
+          "tags": [
+            "Stack",
+            "Monotonic Stack"
+          ],
+          "description": "For each element, return the index of the next strictly greater element to its right, or -1 when there is none.",
+          "function_name": "nextGreaterElement",
+          "param_spec": [
+            {
+              "name": "nums",
+              "type": "int[]"
+            }
+          ],
+          "return_spec": "int[]",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[[1,2,1]]",
+              "expected_output": "[2,-1,2]",
+              "is_sample": true
+            },
+            {
+              "input": "[[1,1,0,0,1]]",
+              "expected_output": "[1,2,2,4,4]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Next Greater Element",
+          "slug": "next-greater-element",
+          "difficulty": "Medium",
+          "domains": [
+            "Stack",
+            "Array"
+          ],
+          "tags": [
+            "Stack",
+            "Monotonic Stack"
+          ],
+          "description": "For each element, return the index of the next strictly greater element to its right, or -1 when there is none.",
+          "function_name": "nextGreaterElement",
+          "param_spec": [
+            {
+              "name": "nums",
+              "type": "int[]"
+            }
+          ],
+          "return_spec": "int[]",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[[1,2,1]]",
+              "expected_output": "[2,-1,2]",
+              "is_sample": true
+            },
+            {
+              "input": "[[1,1,0,0,1]]",
+              "expected_output": "[1,2,2,4,4]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Max sum without adjacents 2",
+          "difficulty": "Medium",
+          "domains": [
+            "Array",
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Array",
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Print the maximum sum of a subsequence using a greedy approach",
+          "difficulty": "Medium",
+          "domains": [
+            "Array",
+            "Greedy"
+          ],
+          "tags": [
+            "Array",
+            "Greedy"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Longest Substring Without Repeating Characters",
+          "slug": "longest-substring-without-repeating-characters",
+          "difficulty": "Medium",
+          "domains": [
+            "String",
+            "Hashing"
+          ],
+          "tags": [
+            "Sliding Window",
+            "Hash Table",
+            "String"
+          ],
+          "description": "Return the length of the longest substring without repeated characters.",
+          "function_name": "lengthOfLongestSubstring",
+          "param_spec": [
+            {
+              "name": "s",
+              "type": "string"
+            }
+          ],
+          "return_spec": "int",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[\"abcabcbb\"]",
+              "expected_output": "3",
+              "is_sample": true
+            },
+            {
+              "input": "[\"bbbbb\"]",
+              "expected_output": "1",
+              "is_sample": true
+            },
+            {
+              "input": "[\"\"]",
+              "expected_output": "0",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Smallest range covering elements from K lists",
+          "difficulty": "Hard",
+          "domains": [
+            "Array",
+            "Sliding Window",
+            "Heap"
+          ],
+          "tags": [
+            "Array",
+            "Sliding Window",
+            "Heap"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Count the triplets",
+          "difficulty": "Medium",
+          "domains": [
+            "Array"
+          ],
+          "tags": [
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Maximum product of an array",
+          "difficulty": "Medium",
+          "domains": [
+            "Array"
+          ],
+          "tags": [
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Maximum sum of 3 elements",
+          "difficulty": "Medium",
+          "domains": [
+            "Array"
+          ],
+          "tags": [
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Array of all permutations of N elements",
+          "difficulty": "Hard",
+          "domains": [
+            "Backtracking"
+          ],
+          "tags": [
+            "Backtracking"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Target sum",
+          "difficulty": "Medium",
+          "domains": [
+            "Backtracking",
+            "Array"
+          ],
+          "tags": [
+            "Backtracking",
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Maximum product of three integers",
+          "difficulty": "Medium",
+          "domains": [
+            "Array"
+          ],
+          "tags": [
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Sorting",
+      "order": 2,
+      "problems": [
+        {
+          "title": "Sort Colors",
+          "slug": "sort-colors",
+          "difficulty": "Medium",
+          "domains": [
+            "Sorting",
+            "Array"
+          ],
+          "tags": [
+            "Array",
+            "Two Pointers",
+            "Sorting"
+          ],
+          "description": "Given an array <code>nums</code> containing only the values 0, 1 and 2, sort them in place so that 0s come first, then 1s, then 2s. Do not use the built-in sort.",
+          "function_name": "sortColors",
+          "param_spec": [
+            {
+              "name": "nums",
+              "type": "int[]"
+            }
+          ],
+          "return_spec": "int[]",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(1)",
+          "test_cases": [
+            {
+              "input": "[[2,0,2,1,1,0]]",
+              "expected_output": "[0,0,1,1,2,2]",
+              "is_sample": true
+            },
+            {
+              "input": "[[2,0,1]]",
+              "expected_output": "[0,1,2]",
+              "is_sample": true
+            },
+            {
+              "input": "[[0]]",
+              "expected_output": "[0]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Longest consecutive sequence",
+          "difficulty": "Medium",
+          "domains": [
+            "Array",
+            "Hashing"
+          ],
+          "tags": [
+            "Array",
+            "Hashing"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Shortest word distance",
+          "difficulty": "Medium",
+          "domains": [
+            "Array",
+            "String"
+          ],
+          "tags": [
+            "Array",
+            "String"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "K largest elements",
+          "difficulty": "Medium",
+          "domains": [
+            "Heap",
+            "Array"
+          ],
+          "tags": [
+            "Heap",
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "K closest elements",
+          "difficulty": "Medium",
+          "domains": [
+            "Sorting",
+            "Array"
+          ],
+          "tags": [
+            "Sorting",
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Binary Search",
+      "order": 3,
+      "problems": [
+        {
+          "title": "Binary Search",
+          "slug": "binary-search",
+          "difficulty": "Easy",
+          "domains": [
+            "Binary Search",
+            "Array"
+          ],
+          "tags": [
+            "Binary Search",
+            "Array"
+          ],
+          "description": "Given a sorted array of distinct integers <code>nums</code> and a target value, return the index of the target, or -1 when it is absent.",
+          "function_name": "search",
+          "param_spec": [
+            {
+              "name": "nums",
+              "type": "int[]"
+            },
+            {
+              "name": "target",
+              "type": "int"
+            }
+          ],
+          "return_spec": "int",
+          "expected_time_complexity": "O(log n)",
+          "expected_space_complexity": "O(1)",
+          "test_cases": [
+            {
+              "input": "[[-1,0,3,5,9,12], 9]",
+              "expected_output": "4",
+              "is_sample": true
+            },
+            {
+              "input": "[[-1,0,3,5,9,12], 2]",
+              "expected_output": "-1",
+              "is_sample": true
+            },
+            {
+              "input": "[[5], 5]",
+              "expected_output": "0",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Minimum number of steps to reach a number",
+          "difficulty": "Medium",
+          "domains": [
+            "Binary Search"
+          ],
+          "tags": [
+            "Binary Search"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Allocate minimum number of pages",
+          "difficulty": "Hard",
+          "domains": [
+            "Binary Search"
+          ],
+          "tags": [
+            "Binary Search"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Painter's partition problem",
+          "difficulty": "Hard",
+          "domains": [
+            "Binary Search"
+          ],
+          "tags": [
+            "Binary Search"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Gas station",
+          "difficulty": "Medium",
+          "domains": [
+            "Binary Search"
+          ],
+          "tags": [
+            "Binary Search"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Search in Rotated Sorted Array",
+          "slug": "search-in-rotated-sorted-array",
+          "difficulty": "Medium",
+          "domains": [
+            "Binary Search",
+            "Array"
+          ],
+          "tags": [
+            "Binary Search",
+            "Array"
+          ],
+          "description": "An ascending sorted array was rotated at an unknown pivot. Given the rotated array and a target, return its index or -1 in O(log n).",
+          "function_name": "search",
+          "param_spec": [
+            {
+              "name": "nums",
+              "type": "int[]"
+            },
+            {
+              "name": "target",
+              "type": "int"
+            }
+          ],
+          "return_spec": "int",
+          "expected_time_complexity": "O(log n)",
+          "expected_space_complexity": "O(1)",
+          "test_cases": [
+            {
+              "input": "[[4,5,6,7,0,1,2], 0]",
+              "expected_output": "4",
+              "is_sample": true
+            },
+            {
+              "input": "[[4,5,6,7,0,1,2], 3]",
+              "expected_output": "-1",
+              "is_sample": true
+            },
+            {
+              "input": "[[1], 0]",
+              "expected_output": "-1",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Peak element in an array",
+          "difficulty": "Medium",
+          "domains": [
+            "Binary Search",
+            "Array"
+          ],
+          "tags": [
+            "Binary Search",
+            "Array"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Kth element in a sorted array",
+          "difficulty": "Medium",
+          "domains": [
+            "Binary Search"
+          ],
+          "tags": [
+            "Binary Search"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Strings",
+      "order": 4,
+      "problems": [
+        {
+          "title": "Reverse String",
+          "slug": "reverse-string",
+          "difficulty": "Easy",
+          "domains": [
+            "String",
+            "Two Pointer"
+          ],
+          "tags": [
+            "Two Pointers",
+            "String"
+          ],
+          "description": "Reverse the characters of the input string and return the result.",
+          "function_name": "reverseString",
+          "param_spec": [
+            {
+              "name": "s",
+              "type": "string"
+            }
+          ],
+          "return_spec": "string",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(1)",
+          "test_cases": [
+            {
+              "input": "[\"hello\"]",
+              "expected_output": "\"olleh\"",
+              "is_sample": true
+            },
+            {
+              "input": "[\"Hannah\"]",
+              "expected_output": "\"hannaH\"",
+              "is_sample": true
+            }
+          ]
+        },
+        {
+          "title": "Valid Palindrome",
+          "slug": "valid-palindrome",
+          "difficulty": "Easy",
+          "domains": [
+            "String",
+            "Two Pointer"
+          ],
+          "tags": [
+            "Two Pointers",
+            "String"
+          ],
+          "description": "Return true if <code>s</code> is a palindrome when ignoring non-alphanumeric characters and treating letters case-insensitively.",
+          "function_name": "isPalindrome",
+          "param_spec": [
+            {
+              "name": "s",
+              "type": "string"
+            }
+          ],
+          "return_spec": "bool",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(1)",
+          "test_cases": [
+            {
+              "input": "[\"A man, a plan, a canal: Panama\"]",
+              "expected_output": "true",
+              "is_sample": true
+            },
+            {
+              "input": "[\"race a car\"]",
+              "expected_output": "false",
+              "is_sample": true
+            },
+            {
+              "input": "[\" \"]",
+              "expected_output": "true",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Longest Substring Without Repeating Characters",
+          "slug": "longest-substring-without-repeating-characters",
+          "difficulty": "Medium",
+          "domains": [
+            "String",
+            "Sliding Window"
+          ],
+          "tags": [
+            "Sliding Window",
+            "Hash Table",
+            "String"
+          ],
+          "description": "Return the length of the longest substring without repeated characters.",
+          "function_name": "lengthOfLongestSubstring",
+          "param_spec": [
+            {
+              "name": "s",
+              "type": "string"
+            }
+          ],
+          "return_spec": "int",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[\"abcabcbb\"]",
+              "expected_output": "3",
+              "is_sample": true
+            },
+            {
+              "input": "[\"bbbbb\"]",
+              "expected_output": "1",
+              "is_sample": true
+            },
+            {
+              "input": "[\"\"]",
+              "expected_output": "0",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "KMP algorithm",
+          "difficulty": "Hard",
+          "domains": [
+            "String"
+          ],
+          "tags": [
+            "String"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Sort a string",
+          "difficulty": "Easy",
+          "domains": [
+            "String",
+            "Sorting"
+          ],
+          "tags": [
+            "String",
+            "Sorting"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Linked List",
+      "order": 5,
+      "problems": [
+        {
+          "title": "Reverse Linked List",
+          "slug": "reverse-linked-list",
+          "difficulty": "Easy",
+          "domains": [
+            "Linked List"
+          ],
+          "tags": [
+            "Linked List"
+          ],
+          "description": "Given the head of a singly linked list, reverse the list and return the new head. The nodes themselves are given to you; you only need to relink them.",
+          "function_name": "reverseList",
+          "param_spec": [
+            {
+              "name": "head",
+              "type": "ListNode"
+            }
+          ],
+          "return_spec": "ListNode",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(1)",
+          "test_cases": [
+            {
+              "input": "[[1,2,3,4,5]]",
+              "expected_output": "[5,4,3,2,1]",
+              "is_sample": true
+            },
+            {
+              "input": "[[1]]",
+              "expected_output": "[1]",
+              "is_sample": true
+            },
+            {
+              "input": "[[]]",
+              "expected_output": "[]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Add Two Numbers",
+          "slug": "add-two-numbers",
+          "difficulty": "Medium",
+          "domains": [
+            "Linked List"
+          ],
+          "tags": [
+            "Linked List",
+            "Math"
+          ],
+          "description": "Two non-empty linked lists represent two non-negative integers whose digits are stored in reverse order. Return the sum as a linked list in the same reversed order.",
+          "function_name": "addTwoNumbers",
+          "param_spec": [
+            {
+              "name": "l1",
+              "type": "ListNode"
+            },
+            {
+              "name": "l2",
+              "type": "ListNode"
+            }
+          ],
+          "return_spec": "ListNode",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[[2,4,3],[5,6,4]]",
+              "expected_output": "[7,0,8]",
+              "is_sample": true
+            },
+            {
+              "input": "[[0],[0]]",
+              "expected_output": "[0]",
+              "is_sample": true
+            },
+            {
+              "input": "[[9,9],[1]]",
+              "expected_output": "[0,0,1]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Delete a node without a key",
+          "difficulty": "Medium",
+          "domains": [
+            "Linked List"
+          ],
+          "tags": [
+            "Linked List"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Subtract two linked lists",
+          "difficulty": "Medium",
+          "domains": [
+            "Linked List"
+          ],
+          "tags": [
+            "Linked List"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Sum of two large numbers",
+          "difficulty": "Medium",
+          "domains": [
+            "Linked List"
+          ],
+          "tags": [
+            "Linked List"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Intersect two sorted linked lists",
+          "difficulty": "Medium",
+          "domains": [
+            "Linked List",
+            "Two Pointer"
+          ],
+          "tags": [
+            "Linked List",
+            "Two Pointer"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Merge two sorted linked lists",
+          "difficulty": "Medium",
+          "domains": [
+            "Linked List"
+          ],
+          "tags": [
+            "Linked List"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Swap nodes in a linked list without data",
+          "difficulty": "Medium",
+          "domains": [
+            "Linked List"
+          ],
+          "tags": [
+            "Linked List"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Recursion and Backtracking",
+      "order": 6,
+      "problems": [
+        {
+          "title": "Sudoku solver",
+          "difficulty": "Hard",
+          "domains": [
+            "Backtracking",
+            "Matrix"
+          ],
+          "tags": [
+            "Backtracking",
+            "Matrix"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "N-queens problem",
+          "difficulty": "Hard",
+          "domains": [
+            "Backtracking",
+            "Matrix"
+          ],
+          "tags": [
+            "Backtracking",
+            "Matrix"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Word break problem",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming",
+            "String"
+          ],
+          "tags": [
+            "Dynamic Programming",
+            "String"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Friends pairing problem",
+          "difficulty": "Medium",
+          "domains": [
+            "Backtracking",
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Backtracking",
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Dynamic Programming",
+      "order": 7,
+      "problems": [
+        {
+          "title": "Climbing Stairs",
+          "slug": "climbing-stairs",
+          "difficulty": "Easy",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming",
+            "Math",
+            "Recursion"
+          ],
+          "description": "You are climbing a staircase with n steps. You may climb one or two steps at a time. Return the number of distinct ways to reach the top.",
+          "function_name": "climbStairs",
+          "param_spec": [
+            {
+              "name": "n",
+              "type": "int"
+            }
+          ],
+          "return_spec": "int",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(1)",
+          "test_cases": [
+            {
+              "input": "[2]",
+              "expected_output": "2",
+              "is_sample": true
+            },
+            {
+              "input": "[3]",
+              "expected_output": "3",
+              "is_sample": true
+            },
+            {
+              "input": "[10]",
+              "expected_output": "89",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "0/1 Knapsack problem",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Coin Change",
+          "slug": "coin-change",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "Given coin denominations and an amount, return the fewest coins needed to make up that amount, or -1 when it cannot be made.",
+          "function_name": "coinChange",
+          "param_spec": [
+            {
+              "name": "coins",
+              "type": "int[]"
+            },
+            {
+              "name": "amount",
+              "type": "int"
+            }
+          ],
+          "return_spec": "int",
+          "expected_time_complexity": "O(amount * n)",
+          "expected_space_complexity": "O(amount)",
+          "test_cases": [
+            {
+              "input": "[[1,2,5], 11]",
+              "expected_output": "3",
+              "is_sample": true
+            },
+            {
+              "input": "[[2], 3]",
+              "expected_output": "-1",
+              "is_sample": true
+            },
+            {
+              "input": "[[1], 0]",
+              "expected_output": "0",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Longest Increasing Subsequence",
+          "slug": "longest-increasing-subsequence",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming",
+            "Binary Search",
+            "Array"
+          ],
+          "description": "Return the length of the longest strictly increasing subsequence.",
+          "function_name": "lengthOfLIS",
+          "param_spec": [
+            {
+              "name": "nums",
+              "type": "int[]"
+            }
+          ],
+          "return_spec": "int",
+          "expected_time_complexity": "O(n log n)",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[[10,9,2,5,3,7,101,18]]",
+              "expected_output": "4",
+              "is_sample": true
+            },
+            {
+              "input": "[[0,1,0,3,2,3]]",
+              "expected_output": "4",
+              "is_sample": true
+            },
+            {
+              "input": "[[7,7,7,7]]",
+              "expected_output": "1",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Longest common subsequence",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming",
+            "String"
+          ],
+          "tags": [
+            "Dynamic Programming",
+            "String"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Partition equal subset sum",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "0/1 Knapsack problem in O(N) space",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Matrix chain multiplication",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Edit distance",
+          "difficulty": "Hard",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Count number of ways to partition a set into K subsets",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Count of subsets with given sum",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Word break problem II",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming",
+            "String"
+          ],
+          "tags": [
+            "Dynamic Programming",
+            "String"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Tries",
+      "order": 8,
+      "problems": [
+        {
+          "title": "Implement Trie",
+          "slug": "implement-trie",
+          "difficulty": "Medium",
+          "domains": [
+            "Trie"
+          ],
+          "tags": [
+            "Trie",
+            "Design"
+          ],
+          "description": "Implement a prefix tree with <code>insert</code>, <code>search</code> and <code>startsWith</code>.<br><br>You receive <code>operations</code>, a flat list of strings read in pairs: the operation name followed by its word. Perform them in order and return one string per <code>search</code> and <code>startsWith</code> call, in that order, as the text <code>\"true\"</code> or <code>\"false\"</code>.",
+          "function_name": "solve",
+          "param_spec": [
+            {
+              "name": "operations",
+              "type": "string[]"
+            }
+          ],
+          "return_spec": "string[]",
+          "expected_time_complexity": "O(L) per operation",
+          "expected_space_complexity": "O(total characters)",
+          "test_cases": [
+            {
+              "input": "[\"insert\",\"apple\",\"search\",\"apple\",\"search\",\"app\",\"startsWith\",\"app\"]",
+              "expected_output": "[\"true\",\"false\",\"true\"]",
+              "is_sample": true
+            },
+            {
+              "input": "[\"insert\",\"hello\",\"startsWith\",\"hell\",\"startsWith\",\"world\"]",
+              "expected_output": "[\"true\",\"false\"]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Prefix search in a trie",
+          "difficulty": "Medium",
+          "domains": [
+            "Trie"
+          ],
+          "tags": [
+            "Trie"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Word search II",
+          "difficulty": "Hard",
+          "domains": [
+            "Trie",
+            "Backtracking"
+          ],
+          "tags": [
+            "Trie",
+            "Backtracking"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Stacks and Queues",
+      "order": 9,
+      "problems": [
+        {
+          "title": "Next Greater Element",
+          "slug": "next-greater-element",
+          "difficulty": "Medium",
+          "domains": [
+            "Stack",
+            "Array"
+          ],
+          "tags": [
+            "Stack",
+            "Monotonic Stack"
+          ],
+          "description": "For each element, return the index of the next strictly greater element to its right, or -1 when there is none.",
+          "function_name": "nextGreaterElement",
+          "param_spec": [
+            {
+              "name": "nums",
+              "type": "int[]"
+            }
+          ],
+          "return_spec": "int[]",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[[1,2,1]]",
+              "expected_output": "[2,-1,2]",
+              "is_sample": true
+            },
+            {
+              "input": "[[1,1,0,0,1]]",
+              "expected_output": "[1,2,2,4,4]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Largest rectangle in histogram",
+          "difficulty": "Hard",
+          "domains": [
+            "Stack"
+          ],
+          "tags": [
+            "Stack"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Rotating string",
+          "difficulty": "Hard",
+          "domains": [
+            "Queue",
+            "String"
+          ],
+          "tags": [
+            "Queue",
+            "String"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Min Stack",
+          "slug": "min-stack",
+          "difficulty": "Medium",
+          "domains": [
+            "Stack"
+          ],
+          "tags": [
+            "Stack",
+            "Design"
+          ],
+          "description": "Design a stack that supports <code>push</code>, <code>pop</code>, <code>top</code> and <code>getMin</code>, all in O(1).\n\nYou receive two arrays: <code>operations</code> lists the operation names to perform in order, and <code>values</code> holds the numbers to push, consumed in order. <code>push</code> and <code>pop</code> return nothing, so report one number per <code>top</code> and <code>getMin</code> call, in the order those calls appear. <code>getMin</code> must work in O(1) as well.",
+          "function_name": "solve",
+          "param_spec": [
+            {
+              "name": "operations",
+              "type": "string[]"
+            },
+            {
+              "name": "values",
+              "type": "int[]"
+            }
+          ],
+          "return_spec": "int[]",
+          "expected_time_complexity": "O(1) per operation",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[[\"push\",\"push\",\"push\",\"getMin\",\"pop\",\"top\",\"getMin\"],[-2,0,-3]]",
+              "expected_output": "[-3,0,-2]",
+              "is_sample": true,
+              "explanation": "Push -2, 0, -3, then read the minimum."
+            },
+            {
+              "input": "[[\"push\",\"getMin\",\"top\"],[5]]",
+              "expected_output": "[5,5]",
+              "is_sample": true
+            },
+            {
+              "input": "[[\"push\",\"push\",\"top\",\"pop\",\"getMin\"],[7,-3]]",
+              "expected_output": "[-3,7]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Maximum size rectangle in a matrix",
+          "difficulty": "Hard",
+          "domains": [
+            "Stack",
+            "Matrix"
+          ],
+          "tags": [
+            "Stack",
+            "Matrix"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Tree",
+      "order": 10,
+      "problems": [
+        {
+          "title": "Same Tree",
+          "slug": "same-tree",
+          "difficulty": "Easy",
+          "domains": [
+            "Tree"
+          ],
+          "tags": [
+            "Tree",
+            "Depth-First Search",
+            "Binary Tree"
+          ],
+          "description": "Return true when the two trees have the same shape and values.",
+          "function_name": "isSameTree",
+          "param_spec": [
+            {
+              "name": "p",
+              "type": "TreeNode"
+            },
+            {
+              "name": "q",
+              "type": "TreeNode"
+            }
+          ],
+          "return_spec": "bool",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[[1,2,3],[1,2,3]]",
+              "expected_output": "true",
+              "is_sample": true
+            },
+            {
+              "input": "[[1,2],[1,null,2]]",
+              "expected_output": "false",
+              "is_sample": true
+            }
+          ]
+        },
+        {
+          "title": "Maximum Depth of Binary Tree",
+          "slug": "maximum-depth-of-binary-tree",
+          "difficulty": "Easy",
+          "domains": [
+            "Tree"
+          ],
+          "tags": [
+            "Tree",
+            "Depth-First Search",
+            "Binary Tree"
+          ],
+          "description": "Return the maximum depth of the binary tree (the longest root-to-leaf path).",
+          "function_name": "maxDepth",
+          "param_spec": [
+            {
+              "name": "root",
+              "type": "TreeNode"
+            }
+          ],
+          "return_spec": "int",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[[3,9,20,null,null,15,7]]",
+              "expected_output": "3",
+              "is_sample": true
+            },
+            {
+              "input": "[[1,null,2]]",
+              "expected_output": "2",
+              "is_sample": true
+            },
+            {
+              "input": "[[]]",
+              "expected_output": "0",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Validate Binary Search Tree",
+          "slug": "validate-binary-search-tree",
+          "difficulty": "Medium",
+          "domains": [
+            "Tree",
+            "BST"
+          ],
+          "tags": [
+            "Tree",
+            "Depth-First Search",
+            "Binary Search Tree"
+          ],
+          "description": "Return true when the tree satisfies the BST ordering property.",
+          "function_name": "isValidBST",
+          "param_spec": [
+            {
+              "name": "root",
+              "type": "TreeNode"
+            }
+          ],
+          "return_spec": "bool",
+          "expected_time_complexity": "O(n)",
+          "expected_space_complexity": "O(n)",
+          "test_cases": [
+            {
+              "input": "[[2,1,3]]",
+              "expected_output": "true",
+              "is_sample": true
+            },
+            {
+              "input": "[[5,1,4,null,null,3,6]]",
+              "expected_output": "false",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "LCA of a binary tree",
+          "difficulty": "Medium",
+          "domains": [
+            "Tree"
+          ],
+          "tags": [
+            "Tree"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Construction of BST from inorder traversal",
+          "difficulty": "Medium",
+          "domains": [
+            "Tree",
+            "BST"
+          ],
+          "tags": [
+            "Tree",
+            "BST"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Serialize and deserialize a binary tree",
+          "difficulty": "Hard",
+          "domains": [
+            "Tree"
+          ],
+          "tags": [
+            "Tree"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Binary tree paths sum",
+          "difficulty": "Medium",
+          "domains": [
+            "Tree",
+            "Backtracking"
+          ],
+          "tags": [
+            "Tree",
+            "Backtracking"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Binary tree maximum path sum",
+          "difficulty": "Medium",
+          "domains": [
+            "Tree",
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Tree",
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Graph",
+      "order": 11,
+      "problems": [
+        {
+          "title": "BFS Traversal",
+          "slug": "bfs-traversal",
+          "difficulty": "Medium",
+          "domains": [
+            "Graph",
+            "BFS"
+          ],
+          "tags": [
+            "Breadth-First Search",
+            "Graph"
+          ],
+          "description": "Breadth-first traversal of a graph given as an adjacency list <code>adj</code> with n nodes numbered 0..n-1. Return the visit order.",
+          "function_name": "bfs",
+          "param_spec": [
+            {
+              "name": "n",
+              "type": "int"
+            },
+            {
+              "name": "adj",
+              "type": "int[][]"
+            }
+          ],
+          "return_spec": "int[]",
+          "expected_time_complexity": "O(n + e)",
+          "expected_space_complexity": "O(n + e)",
+          "test_cases": [
+            {
+              "input": "[5, [[1,2],[0,3],[0],[3],[]]]",
+              "expected_output": "[0,1,2,3]",
+              "is_sample": true
+            },
+            {
+              "input": "[1, [[]]]",
+              "expected_output": "[0]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "DFS Traversal",
+          "slug": "dfs-traversal",
+          "difficulty": "Medium",
+          "domains": [
+            "Graph",
+            "DFS"
+          ],
+          "tags": [
+            "Depth-First Search",
+            "Graph",
+            "Recursion"
+          ],
+          "description": "Depth-first traversal of a graph given as an adjacency list. Return the visit order starting from node 0.",
+          "function_name": "dfs",
+          "param_spec": [
+            {
+              "name": "n",
+              "type": "int"
+            },
+            {
+              "name": "adj",
+              "type": "int[][]"
+            }
+          ],
+          "return_spec": "int[]",
+          "expected_time_complexity": "O(n + e)",
+          "expected_space_complexity": "O(n + e)",
+          "test_cases": [
+            {
+              "input": "[5, [[1,2],[0,3],[0],[1],[]]]",
+              "expected_output": "[0,1,2,3]",
+              "is_sample": true
+            },
+            {
+              "input": "[1, [[]]]",
+              "expected_output": "[0]",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Number of Islands",
+          "slug": "number-of-islands",
+          "difficulty": "Medium",
+          "domains": [
+            "Graph",
+            "BFS",
+            "DFS",
+            "Matrix"
+          ],
+          "tags": [
+            "Depth-First Search",
+            "Breadth-First Search",
+            "Union Find",
+            "Matrix"
+          ],
+          "description": "Given an m x n grid of '1' (land) and '0' (water), return the number of islands. Neighbours share an edge.",
+          "function_name": "numIslands",
+          "param_spec": [
+            {
+              "name": "grid",
+              "type": "string[][]"
+            }
+          ],
+          "return_spec": "int",
+          "expected_time_complexity": "O(m * n)",
+          "expected_space_complexity": "O(m * n)",
+          "test_cases": [
+            {
+              "input": "[[[\"1\",\"1\",\"0\",\"0\",\"0\"],[\"1\",\"1\",\"0\",\"0\",\"0\"],[\"0\",\"0\",\"1\",\"0\",\"0\"],[\"0\",\"0\",\"0\",\"1\",\"1\"]]]",
+              "expected_output": "3",
+              "is_sample": true
+            },
+            {
+              "input": "[[[\"1\",\"1\",\"0\",\"0\",\"0\"],[\"1\",\"1\",\"0\",\"0\",\"0\"],[\"0\",\"0\",\"0\",\"0\",\"0\"],[\"0\",\"0\",\"0\",\"1\",\"1\"]]]",
+              "expected_output": "1",
+              "is_hidden": true
+            }
+          ]
+        },
+        {
+          "title": "Detect cycle in a directed graph",
+          "difficulty": "Medium",
+          "domains": [
+            "Graph"
+          ],
+          "tags": [
+            "Graph"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Detect cycle in an undirected graph",
+          "difficulty": "Medium",
+          "domains": [
+            "Graph"
+          ],
+          "tags": [
+            "Graph"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Disjoint set",
+          "difficulty": "Medium",
+          "domains": [
+            "Graph",
+            "Union Find"
+          ],
+          "tags": [
+            "Graph",
+            "Union Find"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Topological sort",
+          "difficulty": "Hard",
+          "domains": [
+            "Graph"
+          ],
+          "tags": [
+            "Graph"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Prim's algorithm",
+          "difficulty": "Hard",
+          "domains": [
+            "Graph"
+          ],
+          "tags": [
+            "Graph"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Dijkstra's algorithm",
+          "difficulty": "Hard",
+          "domains": [
+            "Graph"
+          ],
+          "tags": [
+            "Graph"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Dynamic programming: advanced",
+      "order": 12,
+      "problems": [
+        {
+          "title": "Tiling problem",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Minimum jumps to reach the end of an array",
+          "difficulty": "Hard",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Maximum sum of a path in a right number triangle",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Unique paths III",
+          "difficulty": "Medium",
+          "domains": [
+            "Backtracking",
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Backtracking",
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Minimum cost path in a grid",
+          "difficulty": "Medium",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Cherry pickup",
+          "difficulty": "Hard",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "A frog's jump",
+          "difficulty": "Hard",
+          "domains": [
+            "Dynamic Programming"
+          ],
+          "tags": [
+            "Dynamic Programming"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Disjoint Set",
+      "order": 13,
+      "problems": [
+        {
+          "title": "Number of connected components",
+          "difficulty": "Medium",
+          "domains": [
+            "Union Find",
+            "Graph"
+          ],
+          "tags": [
+            "Union Find",
+            "Graph"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Redundant connection",
+          "difficulty": "Medium",
+          "domains": [
+            "Union Find",
+            "Graph"
+          ],
+          "tags": [
+            "Union Find",
+            "Graph"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Accounts merge",
+          "difficulty": "Medium",
+          "domains": [
+            "Union Find",
+            "Hashing"
+          ],
+          "tags": [
+            "Union Find",
+            "Hashing"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Greedy",
+      "order": 14,
+      "problems": [
+        {
+          "title": "Fractional knapsack",
+          "difficulty": "Medium",
+          "domains": [
+            "Greedy"
+          ],
+          "tags": [
+            "Greedy"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Huffman encoding",
+          "difficulty": "Hard",
+          "domains": [
+            "Greedy",
+            "Heap"
+          ],
+          "tags": [
+            "Greedy",
+            "Heap"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Assign cookies",
+          "difficulty": "Easy",
+          "domains": [
+            "Greedy"
+          ],
+          "tags": [
+            "Greedy"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Maximum units on a truck",
+          "difficulty": "Easy",
+          "domains": [
+            "Greedy",
+            "Sorting"
+          ],
+          "tags": [
+            "Greedy",
+            "Sorting"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    },
+    {
+      "name": "Advanced structures",
+      "order": 15,
+      "problems": [
+        {
+          "title": "Range minimum query",
+          "difficulty": "Hard",
+          "domains": [
+            "Segment Tree"
+          ],
+          "tags": [
+            "Segment Tree"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Range sum query",
+          "difficulty": "Hard",
+          "domains": [
+            "Segment Tree"
+          ],
+          "tags": [
+            "Segment Tree"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Updates on a range",
+          "difficulty": "Hard",
+          "domains": [
+            "Segment Tree",
+            "Lazy Propagation"
+          ],
+          "tags": [
+            "Segment Tree",
+            "Lazy Propagation"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Persistent segment tree",
+          "difficulty": "Hard",
+          "domains": [
+            "Segment Tree"
+          ],
+          "tags": [
+            "Segment Tree"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Merge sort tree",
+          "difficulty": "Hard",
+          "domains": [
+            "Segment Tree"
+          ],
+          "tags": [
+            "Segment Tree"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        },
+        {
+          "title": "Fenwick tree (BIT)",
+          "difficulty": "Hard",
+          "domains": [
+            "Fenwick Tree"
+          ],
+          "tags": [
+            "Fenwick Tree"
+          ],
+          "description": "",
+          "notes": "Title only: import a richer file to add the statement and tests."
+        }
+      ]
+    }
+  ]
+}

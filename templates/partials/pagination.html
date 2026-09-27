@@ -1,0 +1,11 @@
+{% if page.paginator.num_pages > 1 %}
+<nav class="pagination" aria-label="Pagination">
+  {% if page.has_previous %}
+    <a class="btn btn-ghost" href="?{% if query %}q={{ query|urlencode }}&amp;{% endif %}{% if difficulty %}difficulty={{ difficulty|urlencode }}&amp;{% endif %}{% if domain %}domain={{ domain|urlencode }}&amp;{% endif %}{% if sheet %}sheet={{ sheet|urlencode }}&amp;{% endif %}{% if sort %}sort={{ sort|urlencode }}&amp;{% endif %}page={{ page.previous_page_number }}">Previous</a>
+  {% endif %}
+  <span class="muted small">Page {{ page.number }} of {{ page.paginator.num_pages }} · {{ page.paginator.count }} problems</span>
+  {% if page.has_next %}
+    <a class="btn btn-ghost" href="?{% if query %}q={{ query|urlencode }}&amp;{% endif %}{% if difficulty %}difficulty={{ difficulty|urlencode }}&amp;{% endif %}{% if domain %}domain={{ domain|urlencode }}&amp;{% endif %}{% if sheet %}sheet={{ sheet|urlencode }}&amp;{% endif %}{% if sort %}sort={{ sort|urlencode }}&amp;{% endif %}page={{ page.next_page_number }}">Next</a>
+  {% endif %}
+</nav>
+{% endif %}

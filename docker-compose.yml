@@ -1,0 +1,55 @@
+# Local stack: the web app, optionally with the docker execution backend.
+#
+#   docker compose up --build              # app on http://localhost:8000
+#   DSA_EXECUTION_BACKEND=docker docker compose up --build
+#
+# The database lives in a named volume so `docker compose down` keeps your
+# problems and progress.
+
+services:
+  web:
+    build: .
+    image: dsa-studio:latest
+    command: >
+      sh -c "python manage.py migrate --noinput &&
+             python manage.py seed_dsa_data &&
+             python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    environment:
+      DSA_DEBUG: "1"
+      DSA_SECRET_KEY: "${DSA_SECRET_KEY:-}"
+      DSA_EXECUTION_BACKEND: "${DSA_EXECUTION_BACKEND:-subprocess}"
+      DSA_ALLOWED_HOSTS: "localhost,127.0.0.1,web,0.0.0.0"
+      # Keep the database on a volume; the repo's data/ (sheet JSON) stays put.
+      DSA_DB_PATH: /data/db.sqlite3
+    volumes:
+      - db-data:/data
+      - exec-media:/app/media
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health/').read()"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # Only used when DSA_EXECUTION_BACKEND=docker: submissions run inside these
+  # throwaway containers instead of the web container itself.
+  sandbox:
+    image: dsa-studio:latest
+    profiles: ["sandbox"]
+    command: ["sleep", "infinity"]
+    environment:
+      DSA_EXECUTION_BACKEND: docker
+    volumes:
+      - exec-media:/app/media
+    # Uncomment for a network-isolated run: submitted code gets no route out.
+    # network_mode: "none"
+
+volumes:
+  db-data:
+  exec-media:

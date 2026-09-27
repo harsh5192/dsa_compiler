@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Home · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div>
+    <h1>Welcome back{% if user.is_authenticated %}, {{ user.username }}{% endif %}</h1>
+    <p class="muted">{{ platform_tagline }}</p>
+  </div>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="{% url 'problems:list' %}">Browse problems</a>
+    <a class="btn btn-ghost" href="{% url 'sheets:list' %}">Open a sheet</a>
+  </div>
+</section>
+
+<section class="stat-row" aria-label="Your statistics">
+  <div class="stat">
+    <span class="stat-value">{{ stats.solved }}</span>
+    <span class="stat-label">Solved</span>
+  </div>
+  <div class="stat">
+    <span class="stat-value">{{ stats.problems }}</span>
+    <span class="stat-label">Problems in library</span>
+  </div>
+  <div class="stat">
+    <span class="stat-value">{{ stats.percent }}%</span>
+    <span class="stat-label">Completion</span>
+  </div>
+  <div class="stat">
+    <span class="stat-value">{{ stats.attempts }}</span>
+    <span class="stat-label">Submissions</span>
+  </div>
+  <div class="stat">
+    <span class="stat-value">{{ stats.languages }}</span>
+    <span class="stat-label">Languages</span>
+  </div>
+</section>
+
+<div class="columns">
+  <div class="column-main">
+    {% if resume %}
+    <article class="card resume-card">
+      <div>
+        <h2 class="card-title">Pick up where you left off</h2>
+        <p class="muted">{{ resume.progress.problem.title }}</p>
+        <p class="muted small">
+          {{ resume.progress.get_status_display }} ·
+          {{ resume.progress.attempt_count }} attempt{{ resume.progress.attempt_count|pluralize }}
+          {% if resume.language %} · {{ resume.language.name }}{% endif %}
+        </p>
+      </div>
+      <a class="btn btn-primary" href="{{ resume.url }}">Continue</a>
+    </article>
+    {% endif %}
+
+    <article class="card">
+      <h2 class="card-title">Practice by difficulty</h2>
+      <div class="chip-row">
+        <a class="chip" href="{% url 'problems:list' %}?difficulty=Easy">Easy <span>{{ difficulty_counts.Easy }}</span></a>
+        <a class="chip" href="{% url 'problems:list' %}?difficulty=Medium">Medium <span>{{ difficulty_counts.Medium }}</span></a>
+        <a class="chip" href="{% url 'problems:list' %}?difficulty=Hard">Hard <span>{{ difficulty_counts.Hard }}</span></a>
+      </div>
+    </article>
+
+    <article class="card">
+      <h2 class="card-title">Recent submissions</h2>
+      {% if recent_submissions %}
+        <table class="table">
+          <thead>
+            <tr><th>Problem</th><th>Language</th><th>Verdict</th><th>Cases</th><th>When</th></tr>
+          </thead>
+          <tbody>
+            {% for submission in recent_submissions %}
+              <tr>
+                <td><a href="{{ submission.problem.get_absolute_url }}">{{ submission.problem.title }}</a></td>
+                <td>{{ submission.language.name|default:"—" }}</td>
+                <td><span class="verdict verdict-{{ submission.verdict }}">{{ submission.get_verdict_display }}</span></td>
+                <td>{{ submission.test_cases_passed }}/{{ submission.total_test_cases }}</td>
+                <td class="muted small">{{ submission.submitted_at|timesince }} ago</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="muted">Nothing submitted yet. <a href="{% url 'problems:list' %}">Pick a problem</a> and press Submit.</p>
+      {% endif %}
+    </article>
+  </div>
+
+  <aside class="column-side">
+    <article class="card">
+      <h2 class="card-title">Sheets</h2>
+      <ul class="plain-list">
+        {% for card in sheet_cards %}
+          <li>
+            <a href="{{ card.sheet.get_absolute_url }}">{{ card.sheet.name }}</a>
+            <span class="muted small">{{ card.problems }} problems · {{ card.sections }} sections</span>
+          </li>
+        {% empty %}
+          <li class="muted">No sheets imported yet.</li>
+        {% endfor %}
+      </ul>
+    </article>
+
+    <article class="card">
+      <h2 class="card-title">Languages</h2>
+      <ul class="plain-list">
+        {% for language in languages %}
+          <li>{{ language.name }} <span class="muted small">time limit {{ language.time_limit }}s</span></li>
+        {% endfor %}
+      </ul>
+    </article>
+  </aside>
+</div>
+{% endblock %}

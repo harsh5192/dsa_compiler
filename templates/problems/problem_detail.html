@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ problem.title }} · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<header class="page-header problem-header">
+  <div>
+    <p class="breadcrumb">
+      <a href="{% url 'problems:list' %}">Problems</a>
+      {% for entry in sheets %}
+        / <a href="{{ entry.section.sheet.get_absolute_url }}">{{ entry.section.sheet.name }}</a>
+      {% endfor %}
+    </p>
+    <h1>{{ problem.title }}</h1>
+    <p class="chip-row">
+      <span class="badge badge-{{ problem.difficulty|lower }}">{{ problem.difficulty }}</span>
+      {% for name in problem.domain_names %}<span class="badge badge-domain">{{ name }}</span>{% endfor %}
+      {% if progress %}<span class="badge badge-{{ progress.status }}">{{ progress.get_status_display }}</span>{% endif %}
+    </p>
+  </div>
+  <div class="hero-actions">
+    <label class="visually-hidden" for="language-select">Language</label>
+    <select id="language-select" class="language-select">
+      {% for item in languages %}
+        <option value="{{ item.slug }}" data-monaco="{{ item.monaco_language }}"
+                {% if language and item.pk == language.pk %}selected{% endif %}>{{ item.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+</header>
+
+<div class="workspace"
+     data-problem="{{ problem.slug }}"
+     data-api-run="{% url 'execution:run' %}"
+     data-api-submit="{% url 'execution:submit' %}"
+     data-api-save="{% url 'execution:save-code' %}"
+     data-api-starter="{% url 'execution:starter' problem.slug %}"
+     data-csrf="{{ csrf_token }}"
+     data-editor="{{ editor }}"
+     data-editor-theme="{{ editor_theme }}"
+     data-font-size="{{ editor_font_size }}"
+     data-autosave="{% if autosave %}1{% else %}0{% endif %}"
+     data-autosave-delay="{{ autosave_delay_ms }}"
+     data-show-intro="{% if show_intro %}1{% else %}0{% endif %}"
+     data-total-cases="{{ total_cases }}"
+     data-run-shortcut="{{ run_shortcut }}"
+     data-submit-shortcut="{{ submit_shortcut }}">
+
+  <section class="panel panel-statement" aria-label="Problem statement">
+    <article class="prose">{{ problem.description|safe }}</article>
+
+    {% if problem.input_format %}
+      <h2>Input</h2>
+      <div class="prose">{{ problem.input_format|linebreaksbr }}</div>
+    {% endif %}
+    {% if problem.output_format %}
+      <h2>Output</h2>
+      <div class="prose">{{ problem.output_format|linebreaksbr }}</div>
+    {% endif %}
+    {% if problem.examples %}
+      <h2>Examples</h2>
+      <div class="prose">{{ problem.examples|linebreaksbr }}</div>
+    {% endif %}
+    {% if problem.constraints %}
+      <h2>Constraints</h2>
+      <ul class="constraint-list">
+        {% for line in problem.constraints.splitlines %}{% if line.strip %}<li><code>{{ line }}</code></li>{% endif %}{% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if problem.execution_mode == 'function' %}
+      <h2>Function signature</h2>
+      <pre class="signature"><code>{{ problem.function_name }}(
+{% for param in problem.param_spec %}{{ param.type|default:param }}{% if not forloop.last %}, {% endif %}{% endfor %}) -&gt; {{ problem.return_spec|default:"void" }}</code></pre>
+      <p class="muted small">
+        A test case is a JSON array of arguments, e.g.
+        <code>{% for param in problem.param_spec %}[{% if forloop.first %}…{% else %}, {% endif %}{% endfor %}]
+        {{ problem.return_spec }}]</code>.
+      </p>
+    {% else %}
+      <h2>Input / output</h2>
+      <p class="muted small">Read the test data from standard input and print the answer to standard output.</p>
+    {% endif %}
+
+    <h2>Test cases</h2>
+    <p class="muted small">{{ total_cases }} case{{ total_cases|pluralize }} in total; only the samples are shown.</p>
+    <ol class="sample-list">
+      {% for sample in samples %}
+        <li>
+          <p class="sample-title">{{ sample.label }}</p>
+          <div class="io-grid">
+            <div><span class="io-label">Input</span><pre><code>{{ sample.input }}</code></pre></div>
+            <div><span class="io-label">Output</span><pre><code>{{ sample.expected }}</code></pre></div>
+          </div>
+          {% if sample.explanation %}<p class="muted small">{{ sample.explanation }}</p>{% endif %}
+        </li>
+      {% empty %}
+        <li class="muted">No sample cases were imported for this problem.</li>
+      {% endfor %}
+    </ol>
+
+    {% if problem.hints %}
+      <details class="hints">
+        <summary>Hints</summary>
+        <ul>
+          {% for hint in problem.hints.splitlines %}{% if hint.strip %}<li>{{ hint }}</li>{% endif %}{% endfor %}
+        </ul>
+      </details>
+    {% endif %}
+
+    <h2>Complexity</h2>
+    <p class="muted small">
+      Reference: {{ problem.expected_time_complexity|default:"—" }} time,
+      {{ problem.expected_space_complexity|default:"—" }} space.
+      The platform shows a <em>heuristic</em> estimate of your own code; it is not measured.
+    </p>
+
+    {% if sheets %}
+      <h2>Appears in</h2>
+      <ul class="plain-list">
+        {% for entry in sheets %}
+          <li>
+            {{ entry.section.sheet.name }} · {{ entry.section.name }}
+            <form method="post" action="{% url 'problems:toggle-sheet' problem.slug entry.pk %}" class="inline-form">
+              {% csrf_token %}
+              <button class="btn btn-tiny" type="submit">
+                {% if entry.is_removed %}Show{% else %}Hide{% endif %}
+              </button>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </section>
+
+  <section class="panel panel-editor" aria-label="Code editor and results">
+    <div class="editor-toolbar">
+      <div class="editor-toolbar-left">
+        <button class="btn btn-ghost" type="button" id="btn-reset">Reset</button>
+        <span class="muted small" id="save-state">Saved</span>
+      </div>
+      <div class="editor-toolbar-right">
+        <button class="btn btn-secondary" type="button" id="btn-run" title="{{ run_shortcut }}">Run</button>
+        <button class="btn btn-primary" type="button" id="btn-submit" title="{{ submit_shortcut }}">Submit</button>
+      </div>
+    </div>
+
+    <div class="editor-shell" id="editor-shell">
+      <div id="monaco-host" class="editor-host" hidden></div>
+      <textarea id="code-input" class="editor-textarea" spellcheck="false"
+                aria-label="Solution source code">{{ code }}</textarea>
+    </div>
+
+    <details class="custom-input" id="custom-input-panel">
+      <summary>Custom test case (optional)</summary>
+      <label class="visually-hidden" for="custom-cases">Custom test cases</label>
+      <textarea id="custom-cases" rows="3"
+                placeholder='[[2,7,11,15], 9]  — a JSON array of arguments, or several cases as a list'></textarea>
+    </details>
+
+    <div class="verdict-bar" id="verdict-bar" hidden>
+      <span class="verdict" id="verdict">—</span>
+      <span class="muted small" id="verdict-summary"></span>
+    </div>
+
+    <div class="result-tabs" role="tablist">
+      <button class="tab is-active" type="button" data-tab="cases" role="tab">Test cases</button>
+      <button class="tab" type="button" data-tab="output" role="tab">Output</button>
+      <button class="tab" type="button" data-tab="complexity" role="tab">Complexity</button>
+      <button class="tab" type="button" data-tab="history" role="tab">History</button>
+    </div>
+
+    <div class="tab-panel is-active" data-panel="cases">
+      <table class="table table-cases">
+        <thead><tr><th>Case</th><th>Input</th><th>Expected</th><th>Got</th><th>Verdict</th><th>Time</th></tr></thead>
+        <tbody id="cases-body">
+          <tr class="empty-row"><td colspan="6" class="muted">Run or submit to see results.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tab-panel" data-panel="output">
+      <h3>Compile output</h3>
+      <pre class="console" id="console-compile">—</pre>
+      <h3>stdout / stderr</h3>
+      <pre class="console" id="console-stdout">—</pre>
+      <pre class="console" id="console-stderr">—</pre>
+    </div>
+
+    <div class="tab-panel" data-panel="complexity">
+      <div id="complexity-body" class="empty">Run or submit to see the estimate.</div>
+    </div>
+
+    <div class="tab-panel" data-panel="history">
+      {% if history %}
+        <table class="table">
+          <thead><tr><th>Verdict</th><th>Language</th><th>Cases</th><th>Time</th><th>When</th></tr></thead>
+          <tbody>
+            {% for item in history %}
+              <tr>
+                <td><a href="{{ item.get_absolute_url }}"><span class="verdict verdict-{{ item.verdict }}">{{ item.get_verdict_display }}</span></a></td>
+                <td>{{ item.language.name|default:"—" }}</td>
+                <td>{{ item.test_cases_passed }}/{{ item.total_test_cases }}</td>
+                <td>{{ item.execution_time_display }}</td>
+                <td class="muted small">{{ item.submitted_at|timesince }} ago</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="empty">You have not submitted this problem yet.</p>
+      {% endif %}
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/problem.js' %}" defer></script>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Sheets · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div>
+    <h1>Sheets</h1>
+    <p class="muted">Curated problem lists, imported locally and tracked against your progress.</p>
+  </div>
+</header>
+
+<div class="card-grid">
+  {% for card in sheet_cards %}
+    <article class="card">
+      <h2 class="card-title"><a href="{{ card.sheet.get_absolute_url }}">{{ card.sheet.name }}</a></h2>
+      <p class="muted small">{{ card.sheet.description|default:"No description." }}</p>
+      <p class="muted small">
+        {{ card.problems }} problems · {{ card.sections }} sections · v{{ card.sheet.version }}
+      </p>
+      {% if card.solved is not None %}
+        <div class="progressbar" role="progressbar" aria-valuenow="{{ card.percent }}"
+             aria-valuemin="0" aria-valuemax="100" aria-label="{{ card.sheet.name }} progress">
+          <span style="width: {{ card.percent }}%"></span>
+        </div>
+        <p class="muted small">{{ card.solved }} / {{ card.total }} solved ({{ card.percent }}%)</p>
+      {% endif %}
+      <a class="btn btn-primary" href="{{ card.sheet.get_absolute_url }}">Open</a>
+    </article>
+  {% empty %}
+    <p class="empty">No sheets have been imported. Run <code>manage.py seed_dsa_data</code> to load them.</p>
+  {% endfor %}
+</div>
+{% endblock %}

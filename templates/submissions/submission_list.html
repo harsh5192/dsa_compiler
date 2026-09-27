@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Submissions · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div>
+    <h1>Submissions</h1>
+    <p class="muted">{{ total }} submission{{ total|pluralize }} on record.</p>
+  </div>
+</header>
+
+<form class="filter-bar" method="get" action="{% url 'submissions:list' %}">
+  <label class="visually-hidden" for="verdict">Verdict</label>
+  <select id="verdict" name="verdict">
+    <option value="">Any verdict</option>
+    {% for value, label in verdicts %}
+      <option value="{{ value }}" {% if verdict == value %}selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+  </select>
+  <button class="btn btn-primary" type="submit">Filter</button>
+  <a class="btn btn-ghost" href="{% url 'submissions:list' %}">Reset</a>
+</form>
+
+{% if submissions %}
+  <table class="table">
+    <thead>
+      <tr><th>Problem</th><th>Verdict</th><th>Cases</th><th>Time</th><th>Memory</th><th>Language</th><th>When</th></tr>
+    </thead>
+    <tbody>
+      {% for submission in submissions %}
+        <tr>
+          <td><a href="{{ submission.get_absolute_url }}">{{ submission.problem.title }}</a></td>
+          <td><span class="verdict verdict-{{ submission.verdict }}">{{ submission.get_verdict_display }}</span></td>
+          <td>{{ submission.test_cases_passed }}/{{ submission.total_test_cases }}</td>
+          <td>{{ submission.execution_time_display }}</td>
+          <td>{{ submission.memory_display }}</td>
+          <td>{{ submission.language.name|default:"—" }}</td>
+          <td class="muted small">{{ submission.submitted_at|timesince }} ago</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% include "partials/pagination.html" %}
+{% else %}
+  <p class="empty">No submissions yet. Solve something and it will show up here.</p>
+{% endif %}
+{% endblock %}

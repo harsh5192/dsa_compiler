@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Server error · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<div class="auth-shell">
+  <article class="card auth-card">
+    <h1>500 — something broke</h1>
+    <p class="muted">The error has been logged. Check the console that started the server.</p>
+    <p><a class="btn btn-primary" href="{% url 'dashboard:index' %}">Back home</a></p>
+  </article>
+</div>
+{% endblock %}

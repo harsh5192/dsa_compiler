@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Progress · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div>
+    <h1>Progress</h1>
+    <p class="muted">{{ solved_total }} of {{ total }} problems solved ({{ percent }}%).</p>
+  </div>
+</header>
+
+<div class="progressbar progressbar-lg" role="progressbar" aria-valuenow="{{ percent }}"
+     aria-valuemin="0" aria-valuemax="100" aria-label="Overall progress">
+  <span style="width: {{ percent }}%"></span>
+</div>
+
+<section class="stat-row">
+  <div class="stat"><span class="stat-value">{{ by_status.solved|default:0 }}</span><span class="stat-label">Solved</span></div>
+  <div class="stat"><span class="stat-value">{{ by_status.attempted|default:0 }}</span><span class="stat-label">Attempted</span></div>
+  <div class="stat"><span class="stat-value">{{ by_status.not_started|default:0 }}</span><span class="stat-label">Untouched</span></div>
+  <div class="stat"><span class="stat-value">{{ by_difficulty.Easy|default:0 }}</span><span class="stat-label">Easy solved</span></div>
+  <div class="stat"><span class="stat-value">{{ by_difficulty.Medium|default:0 }}</span><span class="stat-label">Medium solved</span></div>
+  <div class="stat"><span class="stat-value">{{ by_difficulty.Hard|default:0 }}</span><span class="stat-label">Hard solved</span></div>
+</section>
+
+<form class="filter-bar" method="get" action="{% url 'progress:index' %}">
+  <label class="visually-hidden" for="status">Status</label>
+  <select id="status" name="status">
+    <option value="">Any status</option>
+    {% for value, label in statuses %}
+      <option value="{{ value }}" {% if status == value %}selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+  </select>
+  <label class="visually-hidden" for="domain">Domain</label>
+  <select id="domain" name="domain">
+    <option value="">Any domain</option>
+    {% for row in domains %}
+      <option value="{{ row.domains__slug }}" {% if domain == row.domains__slug %}selected{% endif %}>{{ row.domains__name }}</option>
+    {% endfor %}
+  </select>
+  <button class="btn btn-primary" type="submit">Apply</button>
+  <a class="btn btn-ghost" href="{% url 'progress:index' %}">Reset</a>
+</form>
+
+{% if by_domain %}
+  <article class="card">
+    <h2 class="card-title">Solved by domain</h2>
+    <ul class="plain-list">
+      {% for row in by_domain %}
+        <li>
+          <a href="{% url 'problems:list' %}?domain={{ row.problem__primary_domain__name|urlencode }}">{{ row.problem__primary_domain__name }}</a>
+          <span class="muted small">{{ row.n }} solved</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </article>
+{% endif %}
+
+<div class="columns">
+  <div class="column-main">
+    <article class="card">
+      <h2 class="card-title">Your problems</h2>
+      <table class="table">
+        <thead><tr><th>Problem</th><th>Status</th><th>Attempts</th><th>Last language</th><th>Updated</th></tr></thead>
+        <tbody>
+          {% for row in rows %}
+            <tr>
+              <td><a href="{{ row.problem.get_absolute_url }}">{{ row.problem.title }}</a></td>
+              <td><span class="badge badge-{{ row.status }}">{{ row.get_status_display }}</span></td>
+              <td>{{ row.attempt_count }}</td>
+              <td>{{ row.last_language.name|default:"—" }}</td>
+              <td class="muted small">{{ row.updated_at|timesince }} ago</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="5" class="muted">Nothing here yet — submit a solution to start tracking.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </article>
+  </div>
+
+  <aside class="column-side">
+    <article class="card">
+      <h2 class="card-title">Recently solved</h2>
+      <ul class="plain-list">
+        {% for row in solved %}
+          <li>
+            <a href="{{ row.problem.get_absolute_url }}">{{ row.problem.title }}</a>
+            <span class="muted small">{{ row.completed_at|date:"M j" }}</span>
+          </li>
+        {% empty %}
+          <li class="muted">No solved problems yet.</li>
+        {% endfor %}
+      </ul>
+    </article>
+  </aside>
+</div>
+{% endblock %}

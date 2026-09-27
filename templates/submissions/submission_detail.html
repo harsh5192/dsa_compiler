@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Submission {{ submission.pk }} · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div>
+    <p class="breadcrumb">
+      <a href="{% url 'submissions:list' %}">Submissions</a>
+      / #{{ submission.pk }}
+    </p>
+    <h1>{{ submission.problem.title }}</h1>
+    <p class="chip-row">
+      <span class="verdict verdict-{{ submission.verdict }}">{{ submission.get_verdict_display }}</span>
+      <span class="badge">{{ submission.get_mode_display }}</span>
+      <span class="badge">{{ submission.language.name|default:"No language" }}</span>
+    </p>
+  </div>
+</header>
+
+<section class="stat-row">
+  <div class="stat"><span class="stat-value">{{ submission.test_cases_passed }}/{{ submission.total_test_cases }}</span><span class="stat-label">Cases passed</span></div>
+  <div class="stat"><span class="stat-value">{{ submission.execution_time_display }}</span><span class="stat-label">Total time</span></div>
+  <div class="stat"><span class="stat-value">{{ submission.max_execution_time|floatformat:3 }}s</span><span class="stat-label">Slowest case</span></div>
+  <div class="stat"><span class="stat-value">{{ submission.memory_display }}</span><span class="stat-label">Peak memory</span></div>
+  <div class="stat"><span class="stat-value">{{ submission.submitted_at|date:"M j, H:i" }}</span><span class="stat-label">Submitted</span></div>
+</section>
+
+{% if submission.error_message %}
+  <div class="alert alert-error"><strong>{{ submission.get_verdict_display }}</strong> — {{ submission.error_message }}</div>
+{% endif %}
+
+<div class="columns">
+  <div class="column-main">
+    <article class="card">
+      <h2 class="card-title">Test cases</h2>
+      <table class="table table-cases">
+        <thead><tr><th>Case</th><th>Verdict</th><th>Time</th></tr></thead>
+        <tbody>
+          {% for result in results %}
+            <tr>
+              <td>{{ result.label|default:"Test case" }}{% if result.is_sample %} <span class="muted small">(sample)</span>{% endif %}</td>
+              <td>
+                <span class="verdict verdict-{{ result.verdict }}">{{ result.get_verdict_display|default:"—" }}</span>
+                {% if result.error %}<div class="muted small">{{ result.error }}</div>{% endif %}
+              </td>
+              <td>{{ result.execution_time|floatformat:3 }}s</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="3" class="muted">No per-case results were stored.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </article>
+
+    {% if submission.compile_output or submission.stdout or submission.stderr %}
+      <article class="card">
+        <h2 class="card-title">Output</h2>
+        {% if submission.compile_output %}<h3>Compile</h3><pre class="console">{{ submission.compile_output }}</pre>{% endif %}
+        {% if submission.stdout %}<h3>stdout</h3><pre class="console">{{ submission.stdout }}</pre>{% endif %}
+        {% if submission.stderr %}<h3>stderr</h3><pre class="console">{{ submission.stderr }}</pre>{% endif %}
+      </article>
+    {% endif %}
+  </div>
+
+  <aside class="column-side">
+    <article class="card">
+      <h2 class="card-title">Code</h2>
+      <pre class="console"><code>{{ submission.source_code }}</code></pre>
+    </article>
+    <article class="card">
+      <h2 class="card-title">Complexity estimate</h2>
+      <p>{{ submission.estimated_time_complexity|default:"—" }} time · {{ submission.estimated_space_complexity|default:"—" }} space
+         <span class="muted small">({{ submission.complexity_confidence|default:"?" }} confidence)</span></p>
+      {% if submission.complexity_notes %}<pre class="console">{{ submission.complexity_notes }}</pre>{% endif %}
+      <p class="muted small">A heuristic reading of the source, not a measurement.</p>
+    </article>
+    <article class="card">
+      <a class="btn btn-primary" href="{{ submission.problem.get_absolute_url }}">Back to problem</a>
+    </article>
+  </aside>
+</div>
+{% endblock %}

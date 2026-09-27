@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Register · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<div class="auth-shell">
+  <article class="card auth-card">
+    <h1>Create an account</h1>
+    <p class="muted">Stored locally in this installation — no email, no network calls.</p>
+
+    <form method="post" class="stack-form">
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+        <div class="alert alert-error">{{ form.non_field_errors }}</div>
+      {% endif %}
+      {% for field in form %}
+        <div class="form-row">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.help_text %}<p class="muted small">{{ field.help_text }}</p>{% endif %}
+          {% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+        </div>
+      {% endfor %}
+      <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+
+    <p class="muted small">Already registered? <a href="{% url 'accounts:login' %}">Sign in</a>.</p>
+  </article>
+</div>
+{% endblock %}

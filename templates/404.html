@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Not found · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<div class="auth-shell">
+  <article class="card auth-card">
+    <h1>404 — not found</h1>
+    <p class="muted">That page does not exist. The problem may have been renamed or removed.</p>
+    <p><a class="btn btn-primary" href="{% url 'dashboard:index' %}">Back home</a></p>
+  </article>
+</div>
+{% endblock %}

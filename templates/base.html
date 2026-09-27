@@ -1,0 +1,76 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en" data-theme="{{ preference.theme|default:'system' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ platform_name }}{% endblock %}</title>
+  <meta name="description" content="{{ platform_tagline }}">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="manifest" href="{% url 'manifest' %}">
+  <link rel="icon" href="{% static 'icons/favicon.svg' %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="{% url 'dashboard:index' %}">
+      <span class="brand-mark" aria-hidden="true">◆</span>
+      <span>
+        <strong>{{ platform_name }}</strong>
+        <small>{{ platform_tagline }}</small>
+      </span>
+    </a>
+
+    <nav class="topnav" aria-label="Main">
+      <a href="{% url 'problems:list' %}">Problems</a>
+      <a href="{% url 'sheets:list' %}">Sheets</a>
+      <a href="{% url 'progress:index' %}">Progress</a>
+      <a href="{% url 'submissions:list' %}">Submissions</a>
+    </nav>
+
+    <div class="topbar-actions">
+      <form class="quicksearch" method="get" action="{% url 'problems:list' %}" role="search">
+        <label class="visually-hidden" for="q">Search problems</label>
+        <input id="q" type="search" name="q" placeholder="Search problems…" value="{{ query|default:'' }}">
+      </form>
+      {% if user.is_authenticated %}
+        <a class="btn btn-ghost" href="{% url 'accounts:settings' %}">{{ user.username }}</a>
+        <form method="post" action="{% url 'accounts:logout' %}" class="inline-form">
+          {% csrf_token %}
+          <button class="btn btn-ghost" type="submit">Sign out</button>
+        </form>
+      {% else %}
+        <a class="btn btn-ghost" href="{% url 'accounts:login' %}">Sign in</a>
+        <a class="btn btn-primary" href="{% url 'accounts:register' %}">Register</a>
+      {% endif %}
+      <button class="btn btn-ghost theme-toggle" type="button" data-theme-toggle
+              aria-label="Switch colour theme" title="Switch colour theme">◐</button>
+    </div>
+  </div>
+</header>
+
+{% if messages %}
+  <ul class="messages" role="status">
+    {% for message in messages %}
+      <li class="message message-{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<main id="main">
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <p>
+    {{ platform_name }} · {{ execution_backend }} sandbox · all assets served locally
+  </p>
+</footer>
+
+<script src="{% static 'js/app.js' %}" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

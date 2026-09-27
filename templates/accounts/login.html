@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Sign in · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<div class="auth-shell">
+  <article class="card auth-card">
+    <h1>Sign in</h1>
+
+    {% if form.errors %}
+      <div class="alert alert-error">That username and password did not match. Try again.</div>
+    {% endif %}
+
+    <form method="post" class="stack-form">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}">
+      <div class="form-row">
+        <label for="id_username">Username</label>
+        <input type="text" name="username" id="id_username" autocomplete="username" autofocus required>
+      </div>
+      <div class="form-row">
+        <label for="id_password">Password</label>
+        <input type="password" name="password" id="id_password" autocomplete="current-password" required>
+      </div>
+      <button class="btn btn-primary" type="submit">Sign in</button>
+    </form>
+
+    <p class="muted small">No account yet? <a href="{% url 'accounts:register' %}">Register</a>.</p>
+  </article>
+</div>
+{% endblock %}

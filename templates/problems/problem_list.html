@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Problems · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div>
+    <h1>Problems</h1>
+    <p class="muted">
+      {{ solved_total }} of {{ total_active }} solved across the whole library.
+    </p>
+  </div>
+</header>
+
+<form class="filter-bar" method="get" action="{% url 'problems:list' %}">
+  <label class="visually-hidden" for="filter-q">Search</label>
+  <input id="filter-q" type="search" name="q" value="{{ query }}" placeholder="Title, tag, domain or sheet…">
+
+  <label class="visually-hidden" for="filter-difficulty">Difficulty</label>
+  <select id="filter-difficulty" name="difficulty">
+    <option value="">Any difficulty</option>
+    <option value="Easy" {% if difficulty == 'Easy' %}selected{% endif %}>Easy</option>
+    <option value="Medium" {% if difficulty == 'Medium' %}selected{% endif %}>Medium</option>
+    <option value="Hard" {% if difficulty == 'Hard' %}selected{% endif %}>Hard</option>
+  </select>
+
+  <label class="visually-hidden" for="filter-domain">Domain</label>
+  <select id="filter-domain" name="domain">
+    <option value="">Any domain</option>
+    {% for row in domains %}
+      <option value="{{ row.domains__slug }}" {% if domain == row.domains__slug %}selected{% endif %}>{{ row.domains__name }}</option>
+    {% endfor %}
+  </select>
+
+  <label class="visually-hidden" for="filter-sheet">Sheet</label>
+  <select id="filter-sheet" name="sheet">
+    <option value="">Any sheet</option>
+    {% for row in sheets %}
+      <option value="{{ row.slug }}" {% if sheet == row.slug %}selected{% endif %}>{{ row.name }}</option>
+    {% endfor %}
+  </select>
+
+  <label class="visually-hidden" for="filter-sort">Sort</label>
+  <select id="filter-sort" name="sort">
+    <option value="title" {% if sort == 'title' %}selected{% endif %}>Title A→Z</option>
+    <option value="difficulty" {% if sort == 'difficulty' %}selected{% endif %}>Difficulty</option>
+    <option value="updated" {% if sort == 'updated' %}selected{% endif %}>Recently updated</option>
+  </select>
+
+  <button class="btn btn-primary" type="submit">Apply</button>
+  <a class="btn btn-ghost" href="{% url 'problems:list' %}">Reset</a>
+</form>
+
+{% if problems %}
+<ul class="problem-list">
+  {% for problem in problems %}
+    <li class="problem-row status-{{ problem.user_status }}">
+      <a class="problem-title" href="{{ problem.get_absolute_url }}">{{ problem.title }}</a>
+      <span class="badge badge-{{ problem.difficulty|lower }}">{{ problem.difficulty }}</span>
+      <span class="badge badge-domain">{{ problem.display_domain }}</span>
+      {% if problem.user_status == 'solved' %}<span class="badge badge-solved">Solved</span>{% endif %}
+      {% if problem.user_status == 'attempted' %}<span class="badge badge-attempted">Attempted</span>{% endif %}
+      <span class="muted small problem-tags">
+        {% for name in problem.tag_names|slice:":3" %}<span class="tag">{{ name }}</span>{% endfor %}
+      </span>
+    </li>
+  {% endfor %}
+</ul>
+
+{% include "partials/pagination.html" %}
+{% else %}
+  <p class="empty">No problem matches those filters.</p>
+{% endif %}
+{% endblock %}

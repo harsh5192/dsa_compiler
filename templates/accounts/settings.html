@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Settings · {{ platform_name }}{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <div>
+    <h1>Settings</h1>
+    <p class="muted">Preferences are stored per account ({{ user.username }}).</p>
+  </div>
+</header>
+
+<form method="post" class="card settings-form">
+  {% csrf_token %}
+
+  <fieldset>
+    <legend>Appearance</legend>
+    <div class="form-row">
+      <label for="id_theme">Theme</label>
+      <select name="theme" id="id_theme">
+        {% for value, label in theme_choices %}
+          <option value="{{ value }}" {% if preference.theme == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Editor</legend>
+    <div class="form-row">
+      <label for="id_editor">Editor</label>
+      <select name="editor" id="id_editor">
+        <option value="monaco" {% if preference.editor == 'monaco' %}selected{% endif %}>Monaco (bundled)</option>
+        <option value="plain" {% if preference.editor == 'plain' %}selected{% endif %}>Plain textarea (no highlighting)</option>
+      </select>
+      <p class="muted small">The plain textarea always works; Monaco is used when its assets are present.</p>
+    </div>
+    <div class="form-row">
+      <label for="id_editor_theme">Editor colour theme</label>
+      <select name="editor_theme" id="id_editor_theme">
+        {% for value in editor_themes %}
+          <option value="{{ value }}" {% if preference.editor_theme == value %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="id_editor_font_size">Font size</label>
+      <input type="number" name="editor_font_size" id="id_editor_font_size"
+             min="10" max="28" value="{{ preference.editor_font_size }}">
+    </div>
+    <div class="form-row checkbox">
+      <label><input type="checkbox" name="show_editor_intro" {% if preference.show_editor_intro %}checked{% endif %}> Show the editor guide</label>
+    </div>
+    <div class="form-row checkbox">
+      <label><input type="checkbox" name="keyboard_shortcuts" {% if preference.keyboard_shortcuts %}checked{% endif %}> Enable keyboard shortcuts</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Autosave</legend>
+    <div class="form-row checkbox">
+      <label><input type="checkbox" name="autosave" {% if preference.autosave %}checked{% endif %}> Save my code automatically</label>
+    </div>
+    <div class="form-row">
+      <label for="id_autosave_delay_ms">Autosave delay (ms)</label>
+      <input type="number" name="autosave_delay_ms" id="id_autosave_delay_ms"
+             min="300" max="10000" step="100" value="{{ preference.autosave_delay_ms }}">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Execution</legend>
+    <div class="form-row">
+      <label for="id_default_language">Default language</label>
+      <select name="default_language" id="id_default_language">
+        <option value="">No default</option>
+        {% for language in languages %}
+          <option value="{{ language.slug }}" {% if preference.default_language_id == language.pk %}selected{% endif %}>{{ language.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="id_execution_timeout">Default time limit (s)</label>
+      <input type="number" name="execution_timeout" id="id_execution_timeout"
+             min="0.5" max="60" step="0.5" value="{{ preference.execution_timeout }}">
+      <p class="muted small">Each problem may override this; the strictest limit wins.</p>
+    </div>
+  </fieldset>
+
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">Save preferences</button>
+    <a class="btn btn-ghost" href="{% url 'dashboard:index' %}">Cancel</a>
+  </div>
+</form>
+
+<article class="card">
+  <h2 class="card-title">Shortcuts</h2>
+  <table class="table">
+    <tbody>
+      <tr><td><code>{{ preference.run_shortcut }}</code></td><td>Run sample / custom cases</td></tr>
+      <tr><td><code>{{ preference.submit_shortcut }}</code></td><td>Submit against every case</td></tr>
+      <tr><td><code>{{ preference.save_shortcut }}</code></td><td>Save code now</td></tr>
+    </tbody>
+  </table>
+</article>
+{% endblock %}
